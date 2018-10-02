@@ -110,7 +110,29 @@ void draw(){
   square.stepScale = stepScale.getValue();
   hexagon.stepSize = (int)stepSize.getValue();
   hexagon.stepScale = stepScale.getValue();
+  square.iterCount = (int)iterations.getValue();
+  hexagon.iterCount = (int)iterations.getValue();
   
+  if(randomBool){
+    String inputString = controlP5.get(Textfield.class,"Seed Value").getText();
+    
+    if(inputString != "" && inputString != " " && inputString != "\n"){
+        //System.out.println(controlP5.get(Textfield.class,"Seed Value").getText());
+        int randomSeed = 0;
+        square.randomSeed = randomSeed;
+        hexagon.randomSeed = randomSeed;
+        //System.out.println(randomSeed);
+    }
+      
+    else{
+      int randomSeed = int(random(Integer.MAX_VALUE));
+      square.randomSeed = randomSeed;
+      hexagon.randomSeed = randomSeed;
+      System.out.println(randomSeed);
+    }
+      
+  }
+
   
     if(start.isPressed() && letGo){ //same thing, but if gradual is on
       letGo = false; 
@@ -122,9 +144,11 @@ void draw(){
     
     if(reset && !hasEnded){
       
+
+      
       if(dropdown.getValue() == 0){
           for(int i = 0; i < (int)stepcount.getValue(); i++){
-               square.move(); //<>//
+              square.move();
               square.display();
               iterCount++;
               if(iterCount == (int)iterations.getValue()){break;} //if gradual gets to end
@@ -163,7 +187,12 @@ void Reset(){
   hexagon.yPos = height/2;
   square.nodes.clear();
   hexagon.nodes.clear();
+  square.randomCounter = 0;
+  hexagon.randomCounter = 0;
+  square.start = true;
+  hexagon.start = true;
   reset = true;
   hasEnded = false;
+  iterCount = 0;
   
 }

@@ -4,13 +4,19 @@ class RandomGen{
   boolean walkConstrain;
   boolean terrain;
   boolean stroke;
+  boolean start;
   PVector position;
   HashMap<PVector, Integer> nodes;
   int colorInt;
   color myColor;
+  int iterCount;
   int stepSize;
   float stepScale;
   float combinedMove;
+  int randomCounter;
+  int random;
+  int randomSeed;
+  int[] randomMovements;
   
   
   RandomGen(){
@@ -20,7 +26,8 @@ class RandomGen{
     walkConstrain = false;
     position = new PVector(xPos, yPos);
     nodes = new HashMap();
-    
+    start = true;
+    randomCounter = 0;
   }
   
   void display(){
@@ -54,15 +61,42 @@ class RandomGen{
     }
 }
 
+
+
+
+
+
+
+
+
 class Square extends RandomGen{
-  
-  
   
   void move(){
     
     combinedMove = stepSize*stepScale;
         
-    int random = int(random(4));
+    if(start && randomBool){
+      randomSeed(randomSeed);
+      randomMovements = new int[iterCount];
+      for(int i = 0; i < iterCount; i++){
+        randomMovements[i] = int(random(4)); 
+      }
+      start = false;  
+    }
+        
+   else if(start){
+     randomSeed((long)random(Integer.MAX_VALUE));
+      randomMovements = new int[iterCount];
+      System.out.println(iterCount);
+      System.out.println(randomCounter);
+      for(int i = 0; i < iterCount; i++){
+        randomMovements[i] = int(random(4)); 
+      }
+      start = false;  
+   }
+        
+   int random = randomMovements[randomCounter];
+   randomCounter++;
     
    if(walkConstrain){ //can't go past the borders
        
@@ -122,6 +156,21 @@ class Square extends RandomGen{
   
   
 }
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
 
 class Hexagon extends RandomGen{
   
