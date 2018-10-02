@@ -60,15 +60,7 @@ class RandomGen{
       
     }
 }
-
-
-
-
-
-
-
-
-
+ //<>// //<>//
 class Square extends RandomGen{
   
   void move(){
@@ -87,8 +79,6 @@ class Square extends RandomGen{
    else if(start){
      randomSeed((long)random(Integer.MAX_VALUE));
       randomMovements = new int[iterCount];
-      System.out.println(iterCount);
-      System.out.println(randomCounter);
       for(int i = 0; i < iterCount; i++){
         randomMovements[i] = int(random(4)); 
       }
