@@ -84,6 +84,7 @@ void setup(){
   textfield = controlP5.addTextfield("Seed Value")                        
                        .setPosition(110,700)   
                        .setSize(80,30)   
+                       .setText("0")
                        .setInputFilter(controlP5.INTEGER);
                        
 }
@@ -113,30 +114,18 @@ void draw(){
   square.iterCount = (int)iterations.getValue();
   hexagon.iterCount = (int)iterations.getValue();
   
-  if(randomBool){
-    String inputString = controlP5.get(Textfield.class,"Seed Value").getText();
-    
-    if(inputString != "" && inputString != " " && inputString != "\n"){
-        //System.out.println(controlP5.get(Textfield.class,"Seed Value").getText());
-        int randomSeed = 0;
-        square.randomSeed = randomSeed;
-        hexagon.randomSeed = randomSeed;
-        //System.out.println(randomSeed);
-    }
-      
-    else{
-      int randomSeed = int(random(Integer.MAX_VALUE));
-      square.randomSeed = randomSeed;
-      hexagon.randomSeed = randomSeed;
-      System.out.println(randomSeed);
-    }
-      
-  }
+   //<>// //<>//
 
   
     if(start.isPressed() && letGo){ //same thing, but if gradual is on
       letGo = false; 
       Reset(); //default
+      
+        if(randomBool){
+            String inputString = textfield.getText();
+            int randomSeed = Integer.parseInt(inputString);
+            randomSeed(randomSeed);
+          }
     }
     else if(!start.isPressed()){
       letGo = true;
