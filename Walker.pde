@@ -65,7 +65,7 @@ class Square extends RandomGen{
   
   void move(){
     
-    combinedMove = stepSize*stepScale;
+    combinedMove = ceil(stepSize*stepScale);
         
     if(start && randomBool){
       randomSeed(randomSeed);
@@ -90,11 +90,11 @@ class Square extends RandomGen{
     
    if(walkConstrain){ //can't go past the borders
        
-         if((random == 3 && (xPos+combinedMove)>=width) || (random == 2) && (xPos-combinedMove)<=200){
+         if((random == 3 && (xPos+combinedMove)>=(width-ceil(combinedMove/2))) || (random == 2) && (xPos-combinedMove)<=(200+ceil(combinedMove/2))){
              nodes.put(position, (nodes.get(position)+1)); //<>//
              return;
          }
-         if((random == 0 && (yPos+combinedMove)>=height) || (random == 1) && (yPos-combinedMove)<=0){
+         if((random == 0 && (yPos+combinedMove)>=(height-ceil(combinedMove/2))) || (random == 1) && (yPos-combinedMove)<=(0+ceil(combinedMove/2))){
              nodes.put(position, (nodes.get(position)+1)); //<>//
              return;
          }

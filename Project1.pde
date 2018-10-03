@@ -73,7 +73,7 @@ void setup(){
   Textlabel steptext = controlP5.addTextlabel("steptext").setText("Step Size")
                           .setPosition(13,430);
   
-  stepScale = controlP5.addSlider("Step Scale").setPosition(15,450).setSize(100,25).setRange(1,1.5);               
+  stepScale = controlP5.addSlider("Step Scale").setPosition(15,450).setSize(100,25).setRange(1,1.5f);               
   stepScale.getCaptionLabel().setVisible(false);                
   stepScale.getValueLabel().setSize(20);   
   Textlabel scaletext = controlP5.addTextlabel("steprate").setText("Step Scale")
@@ -148,7 +148,7 @@ void draw(){
       
       if(dropdown.getValue() == 0){
           for(int i = 0; i < (int)stepcount.getValue(); i++){
-              square.move();
+              square.move(); //<>//
               square.display();
               iterCount++;
               if(iterCount == (int)iterations.getValue()){break;} //if gradual gets to end
