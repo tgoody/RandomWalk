@@ -5,7 +5,6 @@ class Square extends RandomGen{
    combinedMove = stepSize*stepScale;
     
    int random = int(random(4));//[randomCounter];
-   randomCounter++;
     
    if(walkConstrain){ //can't go past the borders
        
@@ -17,9 +16,6 @@ class Square extends RandomGen{
              nodes.put(position, (nodes.get(position)+1));
              return;
          }
-       
-          //xPos = constrain(xPos, 200, width);
-          //yPos = constrain(yPos, 0, height); //can't go past the borders
           
       }
 

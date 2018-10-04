@@ -13,10 +13,8 @@ class RandomGen{
   int stepSize;
   float stepScale;
   float combinedMove;
-  int randomCounter;
   int random;
   int randomSeed;
-  int[] randomMovements;
   
   
   RandomGen(){
@@ -27,7 +25,6 @@ class RandomGen{
     position = new PVector(xPos, yPos);
     nodes = new HashMap();
     start = true;
-    randomCounter = 0;
   }
   
   void display(){

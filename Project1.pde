@@ -114,7 +114,7 @@ void draw(){
   square.iterCount = (int)iterations.getValue();
   hexagon.iterCount = (int)iterations.getValue();
   
-   //<>// //<>//
+   //<>//
 
   
     if(start.isPressed() && letGo){ //same thing, but if gradual is on
@@ -133,7 +133,6 @@ void draw(){
     
     if(reset && !hasEnded){
       
-
       
       if(dropdown.getValue() == 0){
           for(int i = 0; i < (int)stepcount.getValue(); i++){
@@ -147,7 +146,7 @@ void draw(){
       
       else if(dropdown.getValue() == 1){
           for(int i = 0; i < (int)stepcount.getValue(); i++){
-              hexagon.move();
+              hexagon.move(); //<>//
               hexagon.display();
               iterCount++;
               if(iterCount == (int)iterations.getValue()){break;} //if gradual gets to end
@@ -176,8 +175,6 @@ void Reset(){
   hexagon.yPos = height/2;
   square.nodes.clear();
   hexagon.nodes.clear();
-  square.randomCounter = 0;
-  hexagon.randomCounter = 0;
   square.start = true;
   hexagon.start = true;
   reset = true;
