@@ -16,19 +16,28 @@ class Hexagon extends RandomGen{
   }
   
   boolean constrain(int random){
-    float ourAngle = (random+1) * 60;
-    float tempX = cos(radians(angle))*(stepSize*sqrt(3))*stepScale;
-    float tempY = sin(radians(angle))*(stepSize*sqrt(3))*stepScale;
+    float ourAngle = ((random+1) * 60) - 30;
+    float tempX = cos(radians(ourAngle))*(stepSize*sqrt(3))*stepScale;
+    float tempY = sin(radians(ourAngle))*(stepSize*sqrt(3))*stepScale;
     
     if ((random == 2 || random == 3) && (xPos + tempX) <= (200 + combinedMove) || 
     (random == 0 || random == 5) && (xPos + tempX) >= (width - combinedMove)){
       nodes.put(position, (nodes.get(position)+1));
       return false;
     }
-    else if(((random > 2) && yPos + tempY <= (0 + combinedMove)) ||((random < 3) &&  yPos + tempY >= (height - combinedMove))){
+    else if(((random > 2) && (yPos + tempY) <= (0 + combinedMove)) ||((random < 3) &&  yPos + tempY >= (height - combinedMove))){
       nodes.put(position, (nodes.get(position)+1));
       return false;
     }
+    
+    
+    //if((random == 0 || random == 5) && (xPos ){
+      
+      
+    //}
+    
+    
+    
     return true;
     
   }
@@ -77,7 +86,7 @@ class Hexagon extends RandomGen{
     
       xPos += (cos(radians(angle))*(stepSize*sqrt(3)))*stepScale;
       yPos += (sin(radians(angle))*(stepSize*sqrt(3)))*stepScale;
-      position.set(xPos,yPos);
+      position.set(floor(xPos),floor(yPos));
       if(!nodes.containsKey(position)){
         nodes.put(position, 1);
       }
@@ -91,7 +100,7 @@ class Hexagon extends RandomGen{
     if(terrain){
         int timesVisited = nodes.get(position);
         if (timesVisited < 4){fill(160, 126, 84);}
-        else if (timesVisited < 7){fill(143,170,64);}
+        else if (timesVisited < 7){fill(143,170,64); System.out.println(xPos + " " + yPos + " " + timesVisited);}
         else if (timesVisited < 10){fill(134,134,134);}
         else{
           int snow = (timesVisited*20);
