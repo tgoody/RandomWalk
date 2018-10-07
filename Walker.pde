@@ -31,7 +31,7 @@ class RandomGen{
   
     
   }
-  
+  //////////////////////////////NONE OF THIS CODE USED FOR PROJECT2
   
   void move() {
     

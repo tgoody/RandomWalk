@@ -2,16 +2,16 @@ class Square extends RandomGen{
   
   void move(){
     
-   combinedMove = stepSize*stepScale;
+   combinedMove = stepSize*stepScale; //the movement amount
     
-   int random = int(random(4));//[randomCounter];
+   int random = int(random(4));//the random choice
     
    if(walkConstrain){ //can't go past the borders
        
          if((random == 3 && (xPos+combinedMove)>=(width-ceil(combinedMove/2))) || (random == 2) && (xPos-combinedMove)<=(200+ceil(combinedMove/2))){
              nodes.put(position, (nodes.get(position)+1));
              return;
-         }
+         } //my shoddy constrain method
          if((random == 0 && (yPos+combinedMove)>=(height-ceil(combinedMove/2))) || (random == 1) && (yPos-combinedMove)<=(0+ceil(combinedMove/2))){
              nodes.put(position, (nodes.get(position)+1));
              return;
@@ -30,7 +30,7 @@ class Square extends RandomGen{
       
       position.set(xPos,yPos);
       if(!nodes.containsKey(position)){
-        nodes.put(position, 1);
+        nodes.put(position, 1); //explained in the Hexagon class
       }
       else{nodes.put(position, (nodes.get(position)+1));}
 
