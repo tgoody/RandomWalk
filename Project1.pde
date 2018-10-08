@@ -64,7 +64,7 @@ void setup(){
   Textlabel ratetext = controlP5.addTextlabel("ratetext").setText("Step Rate") //steprate slider
                           .setPosition(13,280);
  
-  stepSize = controlP5.addSlider("Step Size").setPosition(15,400).setSize(100,25).setRange(10,100).setDecimalPrecision(0);                
+  stepSize = controlP5.addSlider("Step Size").setPosition(15,400).setSize(100,25).setRange(10,30).setDecimalPrecision(0);                
   stepSize.getCaptionLabel().setVisible(false);                
   stepSize.getValueLabel().setSize(20);   
   Textlabel steptext = controlP5.addTextlabel("steptext").setText("Step Size") //step size slider
